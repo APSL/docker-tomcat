@@ -1,9 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
 <Server port="8005" shutdown="SHUTDOWN">
+
+  <Listener className="org.apache.catalina.security.SecurityListener" />
   <Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="on" />
   <Listener className="org.apache.catalina.core.JasperListener" />
   <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener" />
-  <Listener className="org.apache.catalina.mbeans.ServerLifecycleListener" />
   <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener" />
+  <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener" />
   <GlobalNamingResources>
     <Resource name="UserDatabase" auth="Container"
               type="org.apache.catalina.UserDatabase"
@@ -26,7 +29,8 @@
     {% endif %}
   </GlobalNamingResources>
   <Service name="Catalina">
-    <Connector port="8080" maxHttpHeaderSize="8192"
+    <Connector executor="tomcatThreadPool"
+               port="8080" protocol="HTTP/1.1" maxHttpHeaderSize="8192"
                maxThreads="15" minSpareThreads="2" maxSpareThreads="5"
                enableLookups="false" redirectPort="8443" acceptCount="100"
                connectionTimeout="20000" disableUploadTimeout="true" 
