@@ -35,6 +35,8 @@ JAVA_OPTS::
 
     -e JAVA_OPTS=-Xms=512m
 
+TIMEOUT::
+    -e TOMCAT_CONNECTION_TIMEOUT=20000
 
 And other options from apsl/circusbase: https://registry.hub.docker.com/u/apsl/circusbase/
 

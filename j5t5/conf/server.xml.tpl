@@ -32,7 +32,7 @@
     <Connector port="8080" maxHttpHeaderSize="8192"
                maxThreads="15" minSpareThreads="2" maxSpareThreads="5"
                enableLookups="false" redirectPort="8443" acceptCount="100"
-               connectionTimeout="20000" disableUploadTimeout="true" 
+               connectionTimeout="{{ TOMCAT_CONNECTION_TIMEOUT | default('20000') }}" disableUploadTimeout="true" 
                address="0.0.0.0" />
     <!--
     <Connector port="8009" 
